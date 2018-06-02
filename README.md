@@ -1,6 +1,8 @@
 # Analysis
 
-This section constructs and evaluates several models detecting fraud in credit card transactions. The analysis focuses on selecting appropriate model evaluation metrics in the case of imbalanced classes (one class represents only a small fraction of the observations). Indeed, with only 1.6% transactions that are fraudulent, a classifier that predicts every transaction to be not fradulent will achieve 98.4% accuracy.  However, such a classifier is valueless.  Therefore, in the cases when classes are imbalanced, metrics other than accuracy should be considered.  These metrics include precision, recall and a combination of these two metrics (F2).  
+This section constructs several models and evaluates their effectiveness in detecting fraud in credit card transactions. The analysis focuses on selecting the appropriate model evaluation metrics in the case of imbalanced classes (i.e., one class represents only a small fraction of the observations). 
+
+Indeed, with only 1.6% transactions that are fraudulent, a classifier that predicts every transaction to be not fradulent will achieve accuracy score of 98.4%.  However, such a classifier is valueless.  Therefore, in the cases when classes are imbalanced, metrics other than accuracy should be considered.  These metrics include precision, recall and a combination of these two metrics (F2).  
 
 Data preparation for the analysis is described in the [previous section](https://eagronin.github.io/credit-card-fraud-prepare/).
 
@@ -17,7 +19,7 @@ def answer_two():
     return accuracy
 ```
 
-The function indeed returns an accuracy score of over 98%, as discussed above.  At the same time, recall (or the fraction of true positive predictions) is 0%, because the model is not designed to classify any transactions as fraudulent. Therefore, despite the high accuracy score, the model performs poorly.
+As predicted, the function returns an accuracy score of over 98%.  At the same time, the recall (or the fraction of all the fraudulent transactions that are correctly predicted as fraudulent) is 0%, because the model is not designed to classify any transactions as fraudulent. Therefore, despite the high accuracy score, the model performs poorly.
 
 Next, we train a support vector classifier (SVC) using the default parameters:
 
@@ -35,7 +37,7 @@ def answer_three():
 
 The accuracy, recall and precision are now 0.995, 0.700 and 0.965, respectively.  An increase in the recall from zero to 0.700 indicates that SVC performs substantially better than a simple majority class rule.
 
-The following code outpust the confusion matrix:
+The following code outputs the confusion matrix:
 
 ```python
 def answer_four():
@@ -56,7 +58,7 @@ The confusion matrix is as follows:
  [  24   56]]
 ```
 
-We now train a logisitic regression classifier with default parameters.  For this classifier we then create a precision recall curve and a ROC curve using the test data.  A precision recall curve shows the tradeoff between recall and precision, while an ROC curve measures the cost in terms of the false positive when the number of true positives increases.
+We now train a logisitic regression classifier with the default parameters.  For this classifier we then create a precision recall curve and an ROC curve using the test data.  A precision recall curve shows the tradeoff between recall and precision, while an ROC curve measures the cost in terms of the false positive rate when the true positive rate increases.
 
 The code for plotting the precision recall curve and ROC curve is shown below:
 
@@ -105,11 +107,11 @@ def answer_five():
     return (rcl.iloc[0], tr_pos_r.iloc[0])
 ```
 
-As an example, the function above returns the recall of 0.81 that corresponds to the precision of 0.95 on the precision recall curve.  Similarly, it returns the true positive rate (which is another name for recall) of 0.95 that corresponds to the false positive rate of 0.16 on the ROC curve.
+As an example, the function above returns the recall of 0.81 that corresponds to the precision of 0.95 on the precision recall curve.  Similarly, it returns the true positive rate (which is another name for the recall) of 0.95, which corresponds to the false positive rate of 0.16 on the ROC curve.
 
 The visualizations of the precision recall curve and ROC curve are shown in the [next section](https://eagronin.github.io/credit-card-fraud-analyze/).
 
-Finally, we perform a grid search over the parameters for a Logisitic Regression classifier, in order to select the best parameters to optimize performace without overfitting.  We use recall for scoring with the default 3-fold cross validation, and impose regularization penalty (both L1 and L2) for the values of C (the inverse of the regularization penalty) in the range from 0.01 to 1.
+Finally, we perform a grid search over the parameters for a Logisitic Regression classifier, in order to select the best parameters and optimize performace without overfitting.  We use the recall for scoring with the default 3-fold cross validation, and impose regularization penalty (both L1 and L2) for the values of C (the inverse of the regularization penalty) in the range from 0.01 to 1.
 
 ```python
 def answer_six():    
