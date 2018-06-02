@@ -11,7 +11,7 @@ Results and visualizatons are presented in the [next section](https://eagronin.g
 First, we train a dummy classifier that classifies everything as the majority class of the training data (i.e., all the transactions are not fraudulent):
 
 ```python
-def answer_two():
+def dummy_classifier():
     
     dummy_majority = DummyClassifier(strategy = 'most_frequent').fit(X_train, y_train)
     accuracy = dummy_majority.score(X_test, y_test)
@@ -24,7 +24,7 @@ As predicted, the function returns an accuracy score of over 98%.  At the same t
 Next, we train a support vector classifier (SVC) using the default parameters:
 
 ```python
-def answer_three():
+def SVC_classifier():
 
     svm = SVC().fit(X_train, y_train)
     y_pred = svm.predict(X_test)
@@ -40,7 +40,7 @@ The accuracy, recall and precision are now 0.995, 0.700 and 0.965, respectively.
 The following code outputs the confusion matrix:
 
 ```python
-def answer_four():
+def confusion_mtrx():
     
     svm = SVC().fit(X_train, y_train)
     y_pred = svm.predict(X_test)
@@ -48,7 +48,7 @@ def answer_four():
     
     return confusion
 
-print(answer_four())
+print(confusion_mtrx())
 ```
 
 The confusion matrix is as follows:
@@ -63,7 +63,7 @@ We now train a logisitic regression classifier with the default parameters.  For
 The code for plotting the precision recall curve and ROC curve is shown below:
 
 ```python
-def answer_five():
+def curves():
         
     plt.clf()
     plt.cla()
@@ -114,7 +114,7 @@ The visualizations of the precision recall curve and ROC curve are shown in the 
 Finally, we perform a grid search over the parameters for a Logisitic Regression classifier, in order to select the best parameters and optimize performace without overfitting.  We use the recall for scoring with the default 3-fold cross validation, and impose regularization penalty (both L1 and L2) for the values of C (the inverse of the regularization penalty) in the range from 0.01 to 1.
 
 ```python
-def answer_six():    
+def grid():    
 
     n = 20
     C_range = np.linspace(0.01, 1, n)
@@ -132,7 +132,7 @@ def answer_six():
     
     return (scores, best_params)
 
-scores = answer_six()
+scores = grid()
 best_params = scores[1]
 scores = scores[0]
 ```
