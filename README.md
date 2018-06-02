@@ -117,7 +117,7 @@ Finally, we perform a grid search over the parameters for a Logisitic Regression
 def answer_six():    
 
     n = 20
-    C_range = np.linspace(0.01, 1, n)   # yticklabels=[0.01, 0.1, 1, 10, 100]
+    C_range = np.linspace(0.01, 1, n)
     penalty = ['l1', 'l2']
     grid_values = dict(penalty = penalty, C = C_range)
 
