@@ -58,9 +58,9 @@ The confusion matrix is as follows:
  [  24   56]]
 ```
 
-We now train a logisitic regression classifier with the default parameters.  For this classifier we then create a precision recall curve and an ROC curve using the test data.  A precision recall curve shows the tradeoff between recall and precision, while an ROC curve measures the cost in terms of the false positive rate when the true positive rate increases.
+We now train a logisitic regression classifier with the default parameters.  For this classifier we then create a precision-recall curve and an ROC curve using the test data.  A precision-recall curve shows the tradeoff between recall and precision, while an ROC curve measures the cost in terms of the false positive rate when the true positive rate increases.
 
-The code for plotting the precision recall curve and ROC curve is shown below:
+The code for plotting the precision-recall curve and ROC curve is shown below:
 
 ```python
 def curves():
@@ -107,11 +107,11 @@ def curves():
     return (rcl.iloc[0], tr_pos_r.iloc[0])
 ```
 
-As an example, the function above returns the recall of 0.81 that corresponds to the precision of 0.95 on the precision recall curve.  Similarly, it returns the true positive rate (which is another name for the recall) of 0.95, which corresponds to the false positive rate of 0.16 on the ROC curve.
+As an example, the function above returns the recall of 0.81 that corresponds to the precision of 0.95 on the precision-recall curve.  Similarly, it returns the true positive rate (which is another name for the recall) of 0.95, which corresponds to the false positive rate of 0.16 on the ROC curve.
 
-The visualizations of the precision recall curve and ROC curve are shown in the [next section](https://eagronin.github.io/credit-card-fraud-analyze/).
+Visualizations of the precision-recall curve and ROC curve are shown in the [next section](https://eagronin.github.io/credit-card-fraud-analyze/).
 
-Finally, we perform a grid search over the parameters for a Logisitic Regression classifier, in order to select the best parameters and optimize performace without overfitting.  We use the recall for scoring with the default 3-fold cross validation, and impose regularization penalty (both L1 and L2) for the values of C (the inverse of the regularization penalty) in the range from 0.01 to 1.
+Finally, we perform a grid search over the parameters for a Logisitic Regression classifier, in order to select the best parameters and optimize performace without overfitting.  We use the recall for scoring with the default 3-fold cross-validation, and impose regularization penalty (both L1 and L2) for the values of C (the inverse of the regularization penalty) in the range from 0.01 to 1.
 
 ```python
 def grid():    
@@ -153,7 +153,7 @@ Penalty =  l2
 C = 0.0621
 ```
 
-The following function visualizes the results from the grid search:
+The following function visualizes the results from the grid search by drawing a heatmap shown in the [next section](https://eagronin.github.io/credit-card-fraud-report/):
 
 ```python
 def GridSearch_Heatmap(scores):
@@ -175,7 +175,7 @@ def GridSearch_Heatmap(scores):
 GridSearch_Heatmap(scores)
 ```
 
-Below is the code that fits the logistic regression using the best paramters obtained in the grid search, and outputs the evaluation scores.
+Below is the code that fits a logistic regression model using the best paramters obtained in the grid search, and outputs the evaluation scores.
 
 ```python
 lr = LogisticRegression(penalty = best_params['penalty'], C = best_params['C']).fit(X_train, y_train)
