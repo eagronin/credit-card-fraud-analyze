@@ -10,6 +10,10 @@ Data preparation for the analysis is described in the [previous section](https:/
 
 Results and visualizatons are presented in the [next section](https://eagronin.github.io/credit-card-fraud-report/).
 
+This project is based on assignments from Applied Machine Learning in Python by University of Michigan on Coursera.
+
+The analysis for this project was performed in Python.
+
 ## Fitting and Evaluating Support Vector Machine and Logistic Regression for Imbalanced Class Data
 
 First, we train a dummy classifier that classifies everything as the majority class of the training data (i.e., all the transactions are not fraudulent):
