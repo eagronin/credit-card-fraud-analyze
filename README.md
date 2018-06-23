@@ -1,5 +1,7 @@
 # Analysis
 
+## Overview
+
 This section constructs several models and evaluates their effectiveness in detecting fraud in credit card transactions. The analysis focuses on selecting the appropriate model evaluation metrics in the case of imbalanced classes (i.e., one class represents only a small fraction of the observations). 
 
 Indeed, with only 1.6% transactions that are fraudulent, a classifier that predicts every transaction to be not fradulent will achieve accuracy score of 98.4%.  However, such a classifier is valueless.  Therefore, in the cases when classes are imbalanced, metrics other than accuracy should be considered.  These metrics include precision, recall and a combination of these two metrics (F2).  
@@ -7,6 +9,8 @@ Indeed, with only 1.6% transactions that are fraudulent, a classifier that predi
 Data preparation for the analysis is described in the [previous section](https://eagronin.github.io/credit-card-fraud-prepare/).
 
 Results and visualizatons are presented in the [next section](https://eagronin.github.io/credit-card-fraud-report/).
+
+## Fitting and Evaluating Support Vector Machine and Logistic Regression for Imbalanced Class Data
 
 First, we train a dummy classifier that classifies everything as the majority class of the training data (i.e., all the transactions are not fraudulent):
 
@@ -58,7 +62,7 @@ The confusion matrix is as follows:
  [  24   56]]
 ```
 
-We now train a logisitic regression classifier with the default parameters.  For this classifier we then create a precision-recall curve and an ROC curve using the test data.  A precision-recall curve shows the tradeoff between recall and precision, while an ROC curve measures the cost in terms of the false positive rate when the true positive rate increases.
+We now train a logistic regression classifier with the default parameters.  For this classifier we then create a precision-recall curve and an ROC curve using the test data.  A precision-recall curve shows the tradeoff between recall and precision, while an ROC curve measures the cost in terms of the false positive rate when the true positive rate increases.
 
 The code for plotting the precision-recall curve and ROC curve is shown below:
 
