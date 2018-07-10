@@ -4,11 +4,11 @@
 
 This section constructs several models and evaluates their effectiveness in detecting fraud in credit card transactions. The analysis focuses on selecting the appropriate model evaluation metrics in the case of imbalanced classes (i.e., one class represents only a small fraction of the observations). 
 
-Indeed, with only 1.6% transactions that are fraudulent, a classifier that predicts every transaction to be not fradulent will achieve accuracy score of 98.4%.  However, such a classifier is valueless.  Therefore, in the cases when classes are imbalanced, metrics other than accuracy should be considered.  These metrics include precision, recall and a combination of these two metrics (F2).  
+Indeed, with only 1.6% transactions that are fraudulent, a classifier that predicts every transaction to be not fraudulent will achieve accuracy score of 98.4%.  However, such a classifier is valueless.  Therefore, in the cases when classes are imbalanced, metrics other than accuracy should be considered.  These metrics include precision, recall and a combination of these two metrics (F2).  
 
 Data preparation for the analysis is described in the [previous section](https://eagronin.github.io/credit-card-fraud-prepare/).
 
-Results and visualizatons are presented in the [next section](https://eagronin.github.io/credit-card-fraud-report/).
+Results and visualizations are presented in the [next section](https://eagronin.github.io/credit-card-fraud-report/).
 
 This project is based on assignments from Applied Machine Learning in Python by University of Michigan on Coursera.
 
@@ -66,7 +66,7 @@ The confusion matrix is as follows:
  [  24   56]]
 ```
 
-We now train a logistic regression classifier with the default parameters.  For this classifier we then create a precision-recall curve and an ROC curve using the test data.  A precision-recall curve shows the tradeoff between recall and precision, while an ROC curve measures the cost in terms of the false positive rate when the true positive rate increases.
+We now train a logistic regression classifier with the default parameters.  For this classifier we then create a precision-recall curve and a ROC curve using the test data.  A precision-recall curve shows the tradeoff between recall and precision, while a ROC curve measures the cost in terms of the false positive rate when the true positive rate increases.
 
 The code for plotting the precision-recall curve and ROC curve is shown below:
 
@@ -119,7 +119,7 @@ As an example, the function above returns the recall of 0.81 that corresponds to
 
 Visualizations of the precision-recall curve and ROC curve are shown in the [next section](https://eagronin.github.io/credit-card-fraud-analyze/).
 
-Finally, we perform a grid search over the parameters for a Logisitic Regression classifier, in order to select the best parameters and optimize performace without overfitting.  We use the recall for scoring with the default 3-fold cross-validation, and impose regularization penalty (both L1 and L2) for the values of C (the inverse of the regularization penalty) in the range from 0.01 to 1.
+Finally, we perform a grid search over the parameters for a Logistic Regression classifier, in order to select the best parameters and optimize performance without overfitting.  We use the recall for scoring with the default 3-fold cross-validation and impose regularization penalty (both L1 and L2) for the values of C (the inverse of the regularization penalty) in the range from 0.01 to 1.
 
 ```python
 def grid():    
@@ -183,7 +183,7 @@ def GridSearch_Heatmap(scores):
 GridSearch_Heatmap(scores)
 ```
 
-Below is the code that fits a logistic regression model using the best paramters obtained in the grid search, and outputs the evaluation scores.
+Below is the code that fits a logistic regression model using the best parameters obtained in the grid search, and outputs the evaluation scores.
 
 ```python
 lr = LogisticRegression(penalty = best_params['penalty'], C = best_params['C']).fit(X_train, y_train)
